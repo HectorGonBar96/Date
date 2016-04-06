@@ -338,33 +338,100 @@ String getSeason(){
 
 String getMonthNameEndYear(){
 	int i;
-	String mes=null;
+	
+	StringBuffer todosMes=new StringBuffer();
+	StringBuffer mes=null;
 	
 	for(i=this.month+1;i<=12;i++){
 		
-		switch(i){
+		this.month=i;
 		
-		case 1: mes="Enero";
-		case 2: mes="Febrero";
-		case 3: mes="Marzo";
-		case 4: mes="Abril";
-		case 5: mes="Mayo";
-		case 6: mes="Junio";
-		case 7: mes="Julio";
-		case 8: mes="Agosto";
-		case 9: mes="Septiembre";
-		case 10: mes="Octubre";
-		case 11: mes="Noviembre";
-		case 12: mes="Diciembre";
-		
+		todosMes.append(getMonthName()+" ");
 		
 		}
-	}
-	
-	return mes;
+		
+	return todosMes.toString();
 }
 
+public String toString(){
+	
+	StringBuffer fecha=new StringBuffer();
+	
+	fecha.append("El "+this.day+" de "+getMonthName()+" de "+this.year);
+	
+	return fecha.toString();
+	
 }
+
+int getmonthDays(){
+	
+
+	int monthDays = 0;
+	
+	switch(this.month){
+	
+	case 1: monthDays=31;break;
+	case 2: 
+		if ((this.year % 4 == 0) && ((this.year % 100 != 0) || (this.year % 400 == 0))){
+			monthDays=29;break;
+		}
+		else{
+			monthDays=28;break;
+		}
+		
+	case 3: monthDays=31;break;
+	case 4: monthDays=30;break;
+	case 5: monthDays=31;break;
+	case 6: monthDays=30;break;
+	case 7: monthDays=31;break;
+	case 8: monthDays=31;break;
+	case 9: monthDays=30;break;
+	case 10: monthDays=31;break;
+	case 11: monthDays=30;break;
+	case 12: monthDays=31;break;
+	
+	}
+	return monthDays;
+}
+
+public String printDatesEndMonth(){
+	
+	StringBuffer fechasFin=new StringBuffer();
+	
+	for(int i=this.day;i<=getmonthDays();i++){
+		
+	fechasFin.append("El "+i+" de "+getMonthName()+" de "+this.year+"\n");
+	
+	}
+	
+return fechasFin.toString();
+
+}
+
+public String printMonthSameDays(){
+	
+	StringBuffer mismosDias=new StringBuffer();
+	
+	int diasMes=getmonthDays();
+
+	for(int i=0;i<=12;i++){
+		
+		this.month=i;
+		
+		if(diasMes==getmonthDays()){
+			
+		mismosDias.append(getMonthName()+" ");
+		
+		}
+		
+		}
+
+	return mismosDias.toString();
+}
+
+
+}
+
 
 
 
