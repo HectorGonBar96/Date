@@ -1,3 +1,5 @@
+package es.unileon.prg.tema6;
+
 public class MainDate {
 
 	public static void main(String[] args) {
@@ -5,7 +7,7 @@ public class MainDate {
 		Date today;
 		Date tomorrow;
 		
-		today = new Date(20,3,2016);
+		today = new Date(11,12,2016);
 		tomorrow = new Date (22,3,2016);
 		
 		System.out.println(today.isSameYear(tomorrow));
@@ -18,17 +20,21 @@ public class MainDate {
 		System.out.println("");
 		System.out.println(today.getMonthName());
 		System.out.println("");
-		System.out.println(today.checkDayOfMonth());
-		System.out.println("");
 		System.out.println(today.getSeason());
 		System.out.println("");
 		System.out.println(today.getMonthNameEndYear());
 		System.out.println("");
-	        System.out.println(today.toString());
+	    	System.out.println(today.toString());
 		System.out.println("");
-		System.out.println(today.printDatesEndMonth());
+		System.out.println(today.printDatesToEndMonth());
 		System.out.println("");
 		System.out.println(today.printMonthSameDays());
+		System.out.println("");
+		System.out.println(today.daysToDate()+" dias");
+		System.out.println("");
+		System.out.println("Han sido "+today.numberOfAttempts()+" intentos");
+		System.out.println("");
+		System.out.println("Han sido "+today.numberOfAttempts2()+" intentos");
 	}
 
 }
