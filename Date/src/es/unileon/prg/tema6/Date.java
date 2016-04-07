@@ -1,5 +1,7 @@
 package es.unileon.prg.tema6;
 
+import java.util.Random;
+import java.io.*;
 
 public class Date {
 
@@ -9,15 +11,24 @@ public class Date {
 	
 	
 public Date(int day, int month, int year){
-	
 	this.setDay(day);
 	this.setMonth(month);
 	this.setYear(year);
+	
+	try {
+		checkDayOfMonth();
+		checkMonth();
+		checkYear();
+	} catch (ExceptionDate e) {
+		System.err.println(e.getMessage());
+		System.exit(0);
+	}
 	 
 }
 
 
 public int getYear() {
+	
 	return year;
 }
 
@@ -110,7 +121,7 @@ String getMonthName(){
 	return mes;
  }
 
-String checkDayOfMonth(){
+void checkDayOfMonth() throws ExceptionDate{
 	
 	String isDay=null;
 	
@@ -118,10 +129,7 @@ String checkDayOfMonth(){
 	
 	case 1: 
 		if(this.day<0 || this.day>31){
-			isDay="El dia de este mes es falso";
-		}
-		else{
-			isDay="El dia de este mes es verdadero";
+			throw new ExceptionDate("¡¡ERROR!!\nExcepcionDate:El dia es falso.\nEsto se debe a que ha introducido un dia negativo o un dia incorrecto para este mes.\nRevise el dia");
 		}
 		break;
 		
@@ -130,22 +138,17 @@ String checkDayOfMonth(){
 		if ((this.year % 4 == 0) && ((this.year % 100 != 0) || (this.year % 400 == 0))){
 			
 			if(this.day<0 || this.day>29){
-				isDay="El dia de este mes es falso";
-			}
-			else{
-				isDay="El dia de este mes es verdadero";
+				throw new ExceptionDate("¡¡ERROR!!\nExcepcionDate:El dia es falso.\nEsto se debe a que ha introducido un dia negativo o un dia incorrecto para este mes.\nRevise el dia");
+			
 			}
 			
 		}
 		
 		else if(this.day<0 || this.day>28){
 			
-			isDay="El dia de este mes es falso";
+			throw new ExceptionDate("¡¡ERROR!!\nExcepcionDate:El dia es falso.\nEsto se debe a que ha introducido un dia negativo o un dia incorrecto para este mes.\nRevise el dia");
 		}
 		
-		else{
-			isDay="El dia de este mes es verdadero";
-		}
 		
 		
 		break;
@@ -154,13 +157,8 @@ String checkDayOfMonth(){
 		
 		if(this.day<0 || this.day>31){
 			
-			isDay="El dia de este mes es falso";
+			throw new ExceptionDate("¡¡ERROR!!\nExcepcionDate:El dia es falso.\nEsto se debe a que ha introducido un dia negativo o un dia incorrecto para este mes.\nRevise el dia");
 			
-		}
-		
-		else{
-			
-			isDay="El dia de este mes es verdadero";
 		}
 		
 		break;
@@ -168,94 +166,77 @@ String checkDayOfMonth(){
 	case 4: 
 		
 		if(this.day<0 || this.day>30){
-			isDay="El dia de este mes es falso";
-		}
-		
-		else{
-			isDay="El dia de este mes es verdadero";
+			throw new ExceptionDate("¡¡ERROR!!\nExcepcionDate:El dia es falso.\nEsto se debe a que ha introducido un dia negativo o un dia incorrecto para este mes.\nRevise el dia");
 		}
 		
 		break;
 		
 	case 5: 
 		if(this.day<0 || this.day>31){
-			isDay="El dia de este mes es falso";
+			throw new ExceptionDate("¡¡ERROR!!\nExcepcionDate:El dia es falso.\nEsto se debe a que ha introducido un dia negativo o un dia incorrecto para este mes.\nRevise el dia");
 		}
 		
-		else{
-			isDay="El dia de este mes es verdadero";
-		}
 		
 		break;
 		
 	case 6: 
 		if(this.day<0 || this.day>30){
-			isDay="El dia de este mes es falso";
-		}
-		else{
-			isDay="El dia de este mes es verdadero";
+			throw new ExceptionDate("¡¡ERROR!!\nExcepcionDate:El dia es falso.\nEsto se debe a que ha introducido un dia negativo o un dia incorrecto para este mes.\nRevise el dia");
 		}
 		break;
 	
 	case 7: 
 		if(this.day<0 || this.day>31){
-			isDay="El dia de este mes es falso";
+			throw new ExceptionDate("¡¡ERROR!!\nExcepcionDate:El dia es falso.\nEsto se debe a que ha introducido un dia negativo o un dia incorrecto para este mes.\nRevise el dia");
 		}
-		else{
-			isDay="El dia de este mes es verdadero";
-		}
+		
 		break;
 		
 	case 8: 
 		if(this.day<0 || this.day>31){
-			isDay="El dia de este mes es falso";
-		}
-		else{
-			isDay="EL dia de este mes es verdadero";
+			throw new ExceptionDate("¡¡ERROR!!\nExcepcionDate:El dia es falso.\nEsto se debe a que ha introducido un dia negativo o un dia incorrecto para este mes.\nRevise el dia");
 		}
 		break;
 		
 	case 9: 
 		if(this.day<0 || this.day>30){
-			isDay="El dia de este mes es falso";
-		}
-		else{
-			isDay="El dia de este mes es verdadero";
+			throw new ExceptionDate("¡¡ERROR!!\nExcepcionDate:El dia es falso.\nEsto se debe a que ha introducido un dia negativo o un dia incorrecto para este mes.\nRevise el dia");
 		}
 		break;
 		
 	case 10: 
 		if(this.day<0 || this.day>31){
-			isDay="El dia de este mes es falso";
-		}
-		else{
-			isDay="El dia de este mes es verdadero";
+			throw new ExceptionDate("¡¡ERROR!!\nExcepcionDate:El dia es falso.\nEsto se debe a que ha introducido un dia negativo o un dia incorrecto para este mes.\nRevise el dia");
 		}
 		break;
 		
 	case 11: 
 		if(this.day<0 || this.day>30){
-			isDay="El dia de este mes es falso";
-		}
-		else{
-			isDay="El dia de este mes es verdadero";
+			throw new ExceptionDate("¡¡ERROR!!\nExcepcionDate:El dia es falso.\nEsto se debe a que ha introducido un dia negativo o un dia incorrecto para este mes.\nRevise el dia");
 		}
 		break;
 		
 	case 12: 
 		if(this.day<0 || this.day>31){
-			isDay="El dia de este mes es falso";
-		}
-		else{
-			isDay="El dia de este mes es verdadero";
+			throw new ExceptionDate("¡¡ERROR!!\nExcepcionDate:El dia es falso.\nEsto se debe a que ha introducido un dia negativo o un dia incorrecto para este mes.\nRevise el dia");
 		}
 		break;
 	
 	}
+}
+
+ void checkMonth() throws ExceptionDate  {
+	if(this.month<0||this.month>12){
+		throw new ExceptionDate("¡¡ERROR!!\nExcepcionDate:El mes es falso.\nEsto se debe a que ha introducido un mes negativo o mayor que 12.\nRevise el mes");
+	}
 	
+}
+
+ void checkYear() throws ExceptionDate {
+	if(this.year<=0){
+		throw new ExceptionDate("¡¡ERROR!!\nExcepcionDate:El año es falso.\nEsto se debe a que ha introducido un año negativo.\nRevise el año");
+	}
 	
-	return isDay;
-		
 }
 
 String getSeason(){
@@ -337,19 +318,22 @@ String getSeason(){
 }
 
 String getMonthNameEndYear(){
-	int i;
+	
 	
 	StringBuffer todosMes=new StringBuffer();
-	StringBuffer mes=null;
+	int count=0;
 	
-	for(i=this.month+1;i<=12;i++){
+	for(int i=this.month+1;i<=12;i++){
 		
 		this.month=i;
 		
 		todosMes.append(getMonthName()+" ");
 		
+		count++;
 		}
-		
+	
+	this.month=this.month-count;
+	
 	return todosMes.toString();
 }
 
@@ -394,7 +378,7 @@ int getmonthDays(){
 	return monthDays;
 }
 
-public String printDatesEndMonth(){
+public String printDatesToEndMonth(){
 	
 	StringBuffer fechasFin=new StringBuffer();
 	
@@ -412,26 +396,133 @@ public String printMonthSameDays(){
 	
 	StringBuffer mismosDias=new StringBuffer();
 	
+	int mes=this.month;
 	int diasMes=getmonthDays();
-
+	
+	
 	for(int i=0;i<=12;i++){
 		
 		this.month=i;
+		
 		
 		if(diasMes==getmonthDays()){
 			
 		mismosDias.append(getMonthName()+" ");
 		
 		}
-		
+		;
 		}
 
+	this.month=mes;
+	
 	return mismosDias.toString();
 }
 
 
+public int daysToDate(){
+		
+		int count=0;
+		int mes=getMonth();
+		
+	
+		for(int i=1;i<mes;i++){
+			this.month=i;
+			for(int j=0;j<getmonthDays();j++){
+				
+				count ++;
+				
+			}
+		}
+		
+		
+		for(int k=mes;k==mes;k++){	
+				
+				for(int j=0;j<this.day;j++){
+					
+					count ++;
+				}
+		}
+		
+		this.month=mes;
+		return count;
+		
+	}
+
+public int numberOfAttempts(){
+	
+	int count=1;
+	boolean acierto=true;
+	boolean aciertoDia=true;
+	
+	while(acierto == true){
+		
+		while(aciertoDia == true){
+			
+		int day = (int) (Math.random()*31+1);
+		
+		if(day == this.day){
+			 
+			aciertoDia=false;
+		}
+		
+		else{
+			count++;
+		  }
+		
+		}	
+		
+int mes = (int) (Math.random()*31+1);
+		
+		if(mes == this.month){
+			 
+		   	acierto=false;
+		}
+		
+		else{
+			count++;
+		}
+	}
+	
+	
+	return count;
 }
 
+public int numberOfAttempts2(){
+	int count=0;
+	boolean acierto=true;
+	boolean aciertoDia=true;
+	
+	do{
+		do{
+			int day = (int) (Math.random()*31+1);
+			
+			if(day == this.day){
+				 
+				aciertoDia=false;
+			}
+			
+			else{
+				count++;
+			  }
+		}while(aciertoDia == true);
+		
+		int mes = (int) (Math.random()*31+1);
+		
+		if(mes == this.month){
+			 
+		   	acierto=false;
+		}
+		
+		else{
+			count++;
+		}
+		
+	}while(acierto == true);
+	
+	return count;
+	
+	
+}
 
-
+}
 
